@@ -63,7 +63,7 @@
 			</aside>
 			<div class="mui-inner-wrap">
 				<header class="mui-bar mui-bar-nav">
-					<a href="#offCanvasSide" class="mui-action-back mui-pull-left"><i class="iconfont icon-touxiang"></i></a>
+					<a href="#offCanvasSide" class="mui-pull-left"><i class="iconfont icon-touxiang"></i></a>
 				    <h1 class="mui-title">FB资讯<i class="iconfont icon-shuaxin"></i></h1>
 				    <a class="mui-pull-right"><i class="iconfont icon-sousuo"></i></a>
 				</header>
@@ -140,15 +140,12 @@
 				});
 
 			});
-			mui.back = function() {
-				var _self = plus.webview.currentWebview();
-				_self.close("auto");
-			}
 			
 			 //侧滑容器父节点
 			var offCanvasWrapper = mui('#offCanvasWrapper');
 			 //主界面容器
-			var offCanvasInner = offCanvasWrapper[0].querySelector('.mui-content');
+			var offCanvasInner = offCanvasWrapper[0].querySelector('.mui-inner-wrap');
+			var offCanvasInner1 = document.querySelector('#news');
 			 //菜单容器
 			var offCanvasSide = document.getElementById("offCanvasSide");
 			if (!mui.os.android) {
@@ -158,31 +155,22 @@
 					spans[i].style.display = "none";
 				}
 			}
-			 //移动效果是否为整体移动
-//			var moveTogether = true;
-//			 //侧滑容器的class列表，增加.mui-slide-in即可实现菜单移动、主界面不动的效果；
-//			var classList = offCanvasWrapper[0].classList;
-//			 //变换侧滑动画移动效果；
-//			mui('.mui-input-group').on('change', 'input', function() {
-//				if (this.checked) {
-//					offCanvasSide.classList.remove('mui-transitioning');
-//					offCanvasSide.setAttribute('style', '');
-//					classList.remove('mui-slide-in');
-//					classList.remove('mui-scalable');
-//					offCanvasInner.insertBefore(offCanvasSide, offCanvasInner.firstElementChild);
-//					offCanvasWrapper.offCanvas().refresh();
-//				}
-//			});
-			 //主界面‘显示侧滑菜单’按钮的点击事件
-			document.getElementById('offCanvasShow').addEventListener('tap', function() {
-				offCanvasWrapper.offCanvas('show');
-			});
-			 //菜单界面，‘关闭侧滑菜单’按钮的点击事件
-			document.getElementById('offCanvasHide').addEventListener('tap', function() {
-				offCanvasWrapper.offCanvas('close');
-			});
+			 //侧滑容器的class列表，增加.mui-slide-in即可实现菜单移动、主界面不动的效果；
+			var classList = offCanvasWrapper[0].classList;
+			 //变换侧滑动画移动效果；
+			offCanvasSide.classList.remove('mui-transitioning');
+			offCanvasSide.setAttribute('style', '');
+			classList.remove('mui-slide-in');
+			classList.remove('mui-scalable');
+			//整体滑动时，侧滑菜单在inner-wrap内
+			offCanvasInner.insertBefore(offCanvasSide, offCanvasInner.firstElementChild);
+			offCanvasInner1.insertBefore(offCanvasSide, offCanvasInner.firstElementChild);
+			offCanvasWrapper.offCanvas().refresh();
+				
+			
 			 //主界面和侧滑菜单界面均支持区域滚动；
 			mui('#offCanvasSideScroll').scroll();
+			mui('#offCanvasContentScroll').scroll();
 			 //实现ios平台原生侧滑关闭页面；
 			if (mui.os.plus && mui.os.ios) {
 				mui.plusReady(function() { //5+ iOS暂时无法屏蔽popGesture时传递touch事件，故该demo直接屏蔽popGesture功能
