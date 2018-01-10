@@ -1,0 +1,19 @@
+{
+	"models/main/main.html": {
+		"resources": [
+			"models/tuijian/tuijian.html"
+		],
+		"refer": [
+			"models/redian/redian.html",
+			"models/tuijian/tuijian.html",
+			"models/yule/yule.html",
+			"models/shehui/shehui.html",
+			"models/beijing/beijing.html"
+		]
+	},
+	"models/tuijian/tuijian.html": {
+		"refer": [
+			"models/tuijian/detail.html"
+		]
+	}
+}
