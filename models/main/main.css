@@ -44,3 +44,18 @@ body {
 .mui-table-view{
 	top:38px;
 }
+
+/*侧边栏*/
+html,
+body {
+	background-color: #efeff4;
+}
+p {
+	text-indent: 22px;
+}
+span.mui-icon {
+	font-size: 14px;
+	color: #007aff;
+	margin-left: -15px;
+	padding-right: 10px;
+}

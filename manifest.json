@@ -101,7 +101,7 @@
         },
         "NativeObj":{
         	"description": "原生对象"
-        }
+        },"OAuth":{},"Share":{}
 	},
 	"plus": {
 		"splashscreen": {
@@ -200,7 +200,10 @@
 					"models/redian/redian.html",
 					"models/yule/yule.html",
 					"models/shehui/shehui.html",
-					"models/beijing/beijing.html"
+					"models/beijing/beijing.html",
+					"models/main/offcanvas-drag-left-plus-menu.html",
+					"models/main/offcanvas-drag-right-plus-menu.html",
+					"models/main/menu.html"
 				],
 				"priority": 0
 			},
@@ -208,6 +211,21 @@
 				"resources": [],
 				"refer": [
 					"models/tuijian/detail.html"
+				],
+				"priority": 0
+			},
+			"models/main/menu.html": {
+				"resources": [],
+				"refer": [
+					"models/login/login.html",
+					"models/setting/setting.html"
+				],
+				"priority": 0
+			},
+			"models/login/login.html": {
+				"resources": [],
+				"refer": [
+					"models/main/main.html"
 				],
 				"priority": 0
 			}
