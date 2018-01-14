@@ -50,7 +50,7 @@
 				swipeBack: false,
 				beforeback: back
 			});
-	
+			//console.log("双击了123");
 			mui.plusReady(function() {
 				var _self = plus.webview.currentWebview();
 				var group = new webviewGroup(_self.id, {
@@ -92,6 +92,21 @@
 					group.switchTab(wid);
 				});
 
+				var contentWebview = null;
+				//监听标题栏的双击事件
+				document.querySelector('.mui-title').addEventListener('tap',function () {
+				  
+				  if(contentWebview==null){
+				    contentWebview = plus.webview.currentWebview().children()[0];
+				  }
+				  //内容区滚动到顶部
+				  console.log("双击了");
+				  
+				  contentWebview.evalJS("mui('#list').pullRefresh().scrollTo(0,0,100)");
+				  debugger;
+				  contentWebview.evalJS("pulldownRefresh()");
+				});
+				
 			});
 	
 			function back() {

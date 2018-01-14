@@ -415,7 +415,12 @@
 						 * 1、因本示例应用启动页就是登录页面，因此注册成功后，直接显示登录页即可；
 						 * 2、如果真实案例中，启动页不是登录页，则需修改，使用mui.openWindow打开真实的登录页面
 						 */
+						//觸發這個Wv界面裏面定義的updateUser
+						var menuPage = plus.webview.getWebviewById("menu");
+						mui.fire(menuPage,'updateUser');
+						plus.webview.currentWebview().hide();
 						plus.webview.getLaunchWebview().show("pop-in");
+						menuPage.show();
 						//若启动页不是登录页，则需通过如下方式打开登录页
 //						mui.openWindow({
 //							url: 'login.html',
@@ -486,10 +491,14 @@
 		(function($) {
 			//处理view的后退与webview后退
 			var oldBack = $.back;
+			console.log("setting后退start");
 			$.back = function() {
-				if (viewApi.canBack()) { //如果view可以后退，则执行view的后退
-					viewApi.back();
+				plus.webview.getLaunchWebview().show();
+				plus.webview.getWebviewById("menu").show();
+				if (viewApi.canBack()) { //如果view可以后退，则执行view的后退					
+					viewApi.back();					
 				} else { //执行webview后退
+					console.log("setting后退");
 					oldBack();
 				}
 			};

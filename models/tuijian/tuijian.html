@@ -6,6 +6,7 @@
 		<title>FB资讯-推荐</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<link rel="stylesheet" href="../../common/mui.min.css">
+		<link rel="stylesheet" href="tuijian.css">
 	</head>
 
 	<body>
@@ -82,7 +83,7 @@
 			 *  下拉刷新获取最新列表 
 			 */
 			function pulldownRefresh() {
-
+				debugger;
 				if(window.plus && plus.networkinfo.getCurrentType() === plus.networkinfo.CONNECTION_NONE) {
 					plus.nativeUI.toast('似乎已断开与互联网的连接', {
 						verticalAlign: 'top'

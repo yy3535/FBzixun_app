@@ -125,7 +125,7 @@
 		</div>
 		<script src="../../common/mui.min.js"></script>
 		<script src="../../common/mui.enterfocus.js"></script>
-		<script src="app.js"></script>
+		<script src="../../common/app.js"></script>
 		<script>
 			(function($, doc) {
 				$.init({
@@ -253,6 +253,8 @@
 								plus.nativeUI.toast(err);
 								return;
 							}
+							//觸發這個Wv界面裏面定義的updateUser
+							mui.fire(menuPage,'updateUser');
 							toMain();
 						});
 					});
